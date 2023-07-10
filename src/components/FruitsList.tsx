@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EditWindow from './EditWindow';
+import SearchBar from './SearchBar';
 import './FruitsList.css';
 
 interface Fruit {
@@ -13,7 +14,7 @@ interface FruitsListProps {
   setFruits: React.Dispatch<React.SetStateAction<Fruit[]>>;
 }
 
-const FruitsList = ({ fruits, setFruits }: FruitsListProps) => {
+const FruitsList: React.FC<FruitsListProps> = ({ fruits, setFruits }) => {
   const [fruitsList, setFruitsList] = useState<Fruit[]>(fruits);
   const [editFruitIndex, setEditFruitIndex] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -50,8 +51,8 @@ const FruitsList = ({ fruits, setFruits }: FruitsListProps) => {
     setEditFruitIndex(null);
   };
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+  const handleSearch = (value: string) => {
+    setSearchTerm(value);
   };
 
   const filteredFruits = fruitsList.filter((fruit) =>
@@ -59,16 +60,9 @@ const FruitsList = ({ fruits, setFruits }: FruitsListProps) => {
   );
 
   return (
-    <div className='fruits-list'>
+    <div className="fruits-list">
       <h2>Fruits List</h2>
-      <div>
-        <input
-          type='text'
-          placeholder='Search by fruit name'
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-      </div>
+      <SearchBar value={searchTerm} onChange={handleSearch} />
       <ul>
         {filteredFruits.map((fruit, index) => (
           <li key={index}>
