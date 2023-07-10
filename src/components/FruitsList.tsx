@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EditWindow from './EditWindow';
-import './FruitsList.css'
+import './FruitsList.css';
 
 interface Fruit {
   name: string;
@@ -16,6 +16,7 @@ interface FruitsListProps {
 const FruitsList = ({ fruits, setFruits }: FruitsListProps) => {
   const [fruitsList, setFruitsList] = useState<Fruit[]>(fruits);
   const [editFruitIndex, setEditFruitIndex] = useState<number | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     setFruitsList(fruits);
@@ -49,13 +50,30 @@ const FruitsList = ({ fruits, setFruits }: FruitsListProps) => {
     setEditFruitIndex(null);
   };
 
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredFruits = fruitsList.filter((fruit) =>
+    fruit.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className='fruits-list'>
       <h2>Fruits List</h2>
+      <div>
+        <input
+          type='text'
+          placeholder='Search by fruit name'
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+      </div>
       <ul>
-        {fruitsList.map((fruit, index) => (
+        {filteredFruits.map((fruit, index) => (
           <li key={index}>
-            <strong>Name:</strong> {fruit.name}, <strong>Price:</strong> {fruit.price} per kilo, <strong>Quantity:</strong> {fruit.quantity}
+            <strong>Name:</strong> {fruit.name}, <strong>Price:</strong> {fruit.price} per kilo,{' '}
+            <strong>Quantity:</strong> {fruit.quantity}
             <button onClick={() => handleEdit(index)}>Edit</button>
             <button onClick={() => handleDelete(index)}>Delete</button>
           </li>
