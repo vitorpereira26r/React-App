@@ -61,7 +61,6 @@ const FruitsList: React.FC<FruitsListProps> = ({ fruits, setFruits }) => {
 
   return (
     <div className="fruits-list">
-      <h2>Fruits List</h2>
       <SearchBar value={searchTerm} onChange={handleSearch} />
       <ul>
         {filteredFruits.map((fruit, index) => (

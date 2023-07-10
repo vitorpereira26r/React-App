@@ -22,9 +22,11 @@ const HomePage: React.FC = () => {
 
   return (
     <div>
-      <h1>Home Page</h1>
       {fruits.length === 0 && !isCreateWindowOpen ? (
-        <button onClick={handleToggleCreateWindow}>Add Fruit</button>
+        <div>
+          <h2>Cadastre uma fruta</h2>
+          <button onClick={handleToggleCreateWindow}>Add Fruit</button>
+        </div>
       ) : (
         <>
           <FruitsList fruits={fruits} setFruits={setFruits}/>
