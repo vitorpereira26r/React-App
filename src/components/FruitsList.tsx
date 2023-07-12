@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import EditWindow from './EditWindow';
 import SearchBar from './SearchBar';
-import './FruitsList.css';
+import DeleteWindow from './DeleteWindow';
+import "./styles/FruitsList.css"
 
 interface Fruit {
   name: string;
@@ -17,17 +18,34 @@ interface FruitsListProps {
 const FruitsList: React.FC<FruitsListProps> = ({ fruits, setFruits }) => {
   const [fruitsList, setFruitsList] = useState<Fruit[]>(fruits);
   const [editFruitIndex, setEditFruitIndex] = useState<number | null>(null);
+  const [showDeleteWindow, setShowDeleteWindow] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [deleteFruitIndex, setDeleteFruitIndex] = useState<number | null>(null);
 
   useEffect(() => {
     setFruitsList(fruits);
   }, [fruits]);
 
   const handleDelete = (index: number) => {
-    const updatedFruits = fruitsList.filter((_, i) => i !== index);
-    setFruitsList(updatedFruits);
-    setFruits(updatedFruits);
+    setDeleteFruitIndex(index);
+    setShowDeleteWindow(true);
   };
+
+  const handleConfirmDelete = () => {
+    if (deleteFruitIndex !== null) {
+      const updatedFruits = fruitsList.filter((_, i) => i !== deleteFruitIndex);
+      setFruitsList(updatedFruits);
+      setFruits(updatedFruits);
+    }
+    setShowDeleteWindow(false);
+    setDeleteFruitIndex(null);
+  };  
+
+  const handleCancelDelete = () => {
+    setShowDeleteWindow(false);
+    setDeleteFruitIndex(null);
+  };
+  
 
   const handleEdit = (index: number) => {
     setEditFruitIndex(index);
@@ -77,6 +95,14 @@ const FruitsList: React.FC<FruitsListProps> = ({ fruits, setFruits }) => {
           fruit={fruitsList[editFruitIndex]}
           onUpdateFruit={handleUpdateFruit}
           onClose={handleCloseEditWindow}
+        />
+      )}
+      {showDeleteWindow && (
+        <DeleteWindow
+          title="Excluir"
+          message="Tem certeza que quer excluir essa fruta? Você perderá todas as informações cadastradas sobre ela."
+          onDelete={handleConfirmDelete}
+          onCancel={handleCancelDelete}
         />
       )}
     </div>
