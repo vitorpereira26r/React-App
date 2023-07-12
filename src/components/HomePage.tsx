@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FruitsList from "./FruitsList";
 import CreateWindow from "./CreateWindow";
+import ConfirmFruit from "./ConfirmFruit";
 
 interface Fruit {
   name: string;
@@ -11,13 +12,19 @@ interface Fruit {
 const HomePage: React.FC = () => {
   const [fruits, setFruits] = useState<Fruit[]>([]);
   const [isCreateWindowOpen, setIsCreateWindowOpen] = useState(false);
+  const [showConfirmFruit, setShowConfirmFruit] = useState(false);
 
   const handleAddFruit = (fruit: Fruit) => {
     setFruits((prevFruits) => [...prevFruits, fruit]);
+    setShowConfirmFruit(true);
   };
 
   const handleToggleCreateWindow = () => {
     setIsCreateWindowOpen(!isCreateWindowOpen);
+  };
+
+  const handleConfirmClose = () => {
+    setShowConfirmFruit(false);
   };
 
   return (
@@ -43,6 +50,9 @@ const HomePage: React.FC = () => {
           }}
           onClose={handleToggleCreateWindow}
         />
+      )}
+      {showConfirmFruit && (
+        <ConfirmFruit onClose={handleConfirmClose} />
       )}
     </div>
   );

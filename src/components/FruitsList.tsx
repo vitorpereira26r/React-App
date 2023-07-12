@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import EditWindow from './EditWindow';
 import SearchBar from './SearchBar';
 import DeleteWindow from './DeleteWindow';
+import CreateWindow from './CreateWindow';
+import ConfirmFruit from './ConfirmFruit';
 import "./styles/FruitsList.css"
 
 interface Fruit {
@@ -25,7 +27,7 @@ const FruitsList: React.FC<FruitsListProps> = ({ fruits, setFruits }) => {
   useEffect(() => {
     setFruitsList(fruits);
   }, [fruits]);
-
+  
   const handleDelete = (index: number) => {
     setDeleteFruitIndex(index);
     setShowDeleteWindow(true);

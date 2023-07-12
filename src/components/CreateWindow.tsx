@@ -37,32 +37,29 @@ const CreateWindow: React.FC<CreateWindowProps> = ({ onAddFruit, onClose }) => {
     };
 
     onAddFruit(newFruit);
-    setName("");
-    setPrice(0);
-    setQuantity(0);
   };
 
   return (
     <div className="create-window-overlay">
-        <div className="create-window">
-          <button className="close-button" onClick={onClose}>
-            X
-          </button>
-          <h2>Create Fruit</h2>
-          <div>
+      <div className="create-window">
+        <button className="close-button" onClick={onClose}>
+          X
+        </button>
+        <h2>Create Fruit</h2>
+        <div>
           <label>Name:</label>
           <input type="text" value={name} onChange={handleNameChange} />
-          </div>
-          <div>
+        </div>
+        <div>
           <label>Price per kilo:</label>
           <input type="number" value={price} onChange={handlePriceChange} />
-          </div>
-          <div>
+        </div>
+        <div>
           <label>Quantity:</label>
           <input type="number" value={quantity} onChange={handleQuantityChange} />
-          </div>
-          <button onClick={handleAddFruit}>Add Fruit</button>
         </div>
+        <button onClick={handleAddFruit}>Add Fruit</button>
+      </div>
     </div>
   );
 };
