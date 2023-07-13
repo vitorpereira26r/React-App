@@ -1,0 +1,84 @@
+.confirm-window-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(59, 53, 53, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .confirm-window {
+    position: relative;
+    background-color: white;
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(2, 2, 2, 0.3);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .confirm-window input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #b8acac;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .confirm-window button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .confirm-window button:hover {
+    background-color: #45a049;
+  }
+  
+  .confirm-window .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .confirm-window .close-button-text {
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .fruit-image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .confirm-window input::placeholder {
+    color: #000000;
+  }
+  

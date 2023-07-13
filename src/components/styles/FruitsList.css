@@ -41,7 +41,7 @@
   background-color: #45a049;
 }
 
-.fruits-list input[type="text"] {
+.fruits-list input {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -49,14 +49,14 @@
   width: 200px;
   margin-bottom: 10px;
   background-color: white;
-  color: #555;
+  color: #f3e9e9;
 }
 
-.fruits-list input[type="text"]::placeholder {
-  color: #080808;
+.fruits-list input::placeholder {
+  color: #000000;
 }
 
-.fruits-list input[type="text"]:focus {
+.fruits-list input:focus {
   outline: none;
   border-color: #4caf50;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);

@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(59, 53, 53, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,18 +18,20 @@
   height: 400px;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px rgba(2, 2, 2, 0.3);
   z-index: 10000;
-  display: flex; /* Adicionado */
-  flex-direction: column; /* Adicionado */
-  align-items: center; /* Adicionado */
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
 }
 
-.create-window input {
+.create-window input{
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid #b8acac;
   border-radius: 4px;
   font-size: 16px;
 }
@@ -60,19 +62,23 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  display: flex; /* Adicionado */
-  align-items: center; /* Adicionado */
-  justify-content: center; /* Adicionado */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
 }
 
 .create-window .close-button-text {
-  display: inline-block; /* Adicionado */
-  width: 100%; /* Adicionado */
+  display: inline-block; 
+  width: 100%;
 }
 
 .fruit-image {
   width: 200px;
   height: 200px;
   margin-bottom: 20px;
+}
+
+.create-window input::placeholder {
+  color: #000000;
 }
 

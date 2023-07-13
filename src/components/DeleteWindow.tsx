@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/Window.css';
+import './styles/DeleteWindow.css';
 
 interface DeleteWindowProps {
   title: string;
@@ -10,8 +10,8 @@ interface DeleteWindowProps {
 
 const DeleteWindow: React.FC<DeleteWindowProps> = ({ title, message, onDelete, onCancel }) => {
   return (
-    <div className="create-window-overlay">
-      <div className="create-window">
+    <div className="delete-window-overlay">
+      <div className="delete-window">
         <button className="close-button" onClick={onCancel}>
           <span className="close-button-text">X</span>
         </button>

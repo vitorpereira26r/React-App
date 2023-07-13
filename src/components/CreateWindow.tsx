@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles/Window.css";
+import "./styles/CreateWindow.css";
 
 interface Fruit {
   name: string;

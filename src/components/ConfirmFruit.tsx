@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/Window.css';
+import './styles/ConfirmFruit.css';
 import fruitImage from './images/test.1-removebg-preview.png';
 
 interface ConfirmFruitProps {
@@ -8,8 +8,8 @@ interface ConfirmFruitProps {
 
 const ConfirmFruit: React.FC<ConfirmFruitProps> = ({ onClose }) => {
   return (
-    <div className="create-window-overlay">
-      <div className="create-window">
+    <div className="confirm-window-overlay">
+      <div className="confirm-window">
       <img src={fruitImage} alt="Fruit" className="fruit-image" />
         <button className="close-button" onClick={onClose}>
           <span className="close-button-text">X</span>

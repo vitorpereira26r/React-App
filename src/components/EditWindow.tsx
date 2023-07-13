@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles/Window.css";
+import "./styles/EditWindow.css";
 
 interface Fruit {
   name: string;
@@ -41,8 +41,8 @@ const EditWindow: React.FC<EditWindowProps> = ({ fruit, onUpdateFruit, onClose }
   };
 
   return (
-    <div className="create-window-overlay">
-      <div className="create-window">
+    <div className="edit-window-overlay">
+      <div className="edit-window">
         <button className="close-button" onClick={onClose}>
             X
           </button>
