@@ -101,8 +101,6 @@ const FruitsList: React.FC<FruitsListProps> = ({ fruits, setFruits }) => {
       )}
       {showDeleteWindow && (
         <DeleteWindow
-          title="Excluir"
-          message="Tem certeza que quer excluir essa fruta? Você perderá todas as informações cadastradas sobre ela."
           onDelete={handleConfirmDelete}
           onCancel={handleCancelDelete}
         />

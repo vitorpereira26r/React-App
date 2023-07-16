@@ -2,21 +2,19 @@ import React from 'react';
 import './styles/DeleteWindow.css';
 
 interface DeleteWindowProps {
-  title: string;
-  message: string;
   onDelete: () => void;
   onCancel: () => void;
 }
 
-const DeleteWindow: React.FC<DeleteWindowProps> = ({ title, message, onDelete, onCancel }) => {
+const DeleteWindow: React.FC<DeleteWindowProps> = ({ onDelete, onCancel }) => {
   return (
     <div className="delete-window-overlay">
       <div className="delete-window">
         <button className="close-button" onClick={onCancel}>
           <span className="close-button-text">X</span>
         </button>
-        <h2>{title}</h2>
-        <p>{message}</p>
+        <h2>Excluir</h2>
+        <p>Tem certeza que quer excluir essa fruta? Você perderá todas as informações cadastradas sobre ela.</p>
         <div>
           <button onClick={onDelete}>Sim, excluir</button>
           <button onClick={onCancel}>Não</button>
