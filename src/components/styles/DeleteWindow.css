@@ -36,7 +36,7 @@
   
   .delete-window button {
     padding: 10px 20px;
-    background-color: #4caf50;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 4px;
@@ -74,4 +74,8 @@
     display: inline-block;
     width: 100%;
   }
-  
+
+  .delete-yes{
+    background-color: red;
+    color: white;
+  }

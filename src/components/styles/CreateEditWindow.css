@@ -25,10 +25,15 @@
   align-items: center; 
 }
 
+.create-window h2{
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
 .create-window input{
-  width: 100%;
+  width: 300px;
   padding: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   color: #000000;
   background-color: #ffffff;
   border: 1px solid #b8acac;
@@ -80,5 +85,25 @@
 
 .create-window input::placeholder {
   color: #000000;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 5px;
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid #b8acac;
+  border-radius: 4px;
+  font-size: 16px;
 }
 

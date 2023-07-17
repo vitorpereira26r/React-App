@@ -3,8 +3,8 @@ import "./styles/CreateEditWindow.css";
 
 interface Fruit {
   name: string;
-  price: number;
-  quantity: number;
+  price?: number; // Alterado para ser opcional
+  quantity?: number; // Alterado para ser opcional
 }
 
 interface CreateWindowProps {
@@ -14,8 +14,8 @@ interface CreateWindowProps {
 
 const CreateWindow: React.FC<CreateWindowProps> = ({ onAddFruit, onClose }) => {
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState<number | undefined>(); // Inicializado como undefined
+  const [quantity, setQuantity] = useState<number | undefined>(); // Inicializado como undefined
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -45,18 +45,15 @@ const CreateWindow: React.FC<CreateWindowProps> = ({ onAddFruit, onClose }) => {
         <button className="close-button" onClick={onClose}>
           X
         </button>
-        <h2>Create Fruit</h2>
+        <h2>Cadastrar Fruta</h2>
         <div>
-          <label>Name:</label>
-          <input type="text" value={name} onChange={handleNameChange} />
+          <input placeholder="Nome da fruta" type="text" value={name} onChange={handleNameChange} />
         </div>
         <div>
-          <label>Price per kilo:</label>
-          <input type="number" value={price} onChange={handlePriceChange} />
+          <input placeholder="Preço do kilo" type="number" value={price || ""} onChange={handlePriceChange} />
         </div>
         <div>
-          <label>Quantity:</label>
-          <input type="number" value={quantity} onChange={handleQuantityChange} />
+          <input placeholder="Quantidade em estoque" type="number" value={quantity || ""} onChange={handleQuantityChange} />
         </div>
         <button onClick={handleAddFruit}>Add Fruit</button>
       </div>

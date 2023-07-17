@@ -14,14 +14,13 @@
 
 .fruits-list ul {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   list-style: none;
   padding: 0;
 }
 
 .fruits-list li {
-  flex: 0 0 500px;
+  width: 500px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;

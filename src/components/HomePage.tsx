@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
     <div className="home-page">
       {fruits.length === 0 && !isCreateWindowOpen ? (
         <div>
-          <h2>Cadastre uma fruta</h2>
+          <h2>Cadastre sua primeira fruta</h2>
           <button onClick={handleToggleCreateWindow} className="add-fruit-button"> &#43; Cadastre uma fruta</button>
         </div>
       ) : (

@@ -13,10 +13,10 @@ const DeleteWindow: React.FC<DeleteWindowProps> = ({ onDelete, onCancel }) => {
         <button className="close-button" onClick={onCancel}>
           <span className="close-button-text">X</span>
         </button>
-        <h2>Excluir</h2>
+        <h2>Excluir Fruta</h2>
         <p>Tem certeza que quer excluir essa fruta? Você perderá todas as informações cadastradas sobre ela.</p>
         <div>
-          <button onClick={onDelete}>Sim, excluir</button>
+          <button onClick={onDelete} className='delete-yes'>Sim, excluir</button>
           <button onClick={onCancel}>Não</button>
         </div>
       </div>

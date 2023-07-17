@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles/CreateEditWindow.css";
+import "./styles/EditWindow.css";
 
 interface Fruit {
   name: string;
@@ -42,23 +42,39 @@ const EditWindow: React.FC<EditWindowProps> = ({ fruit, onUpdateFruit, onClose }
   };
 
   return (
-    <div className="create-window-overlay">
-      <div className="create-window">
+    <div className="edit-window-overlay">
+      <div className="edit-window">
         <button className="close-button" onClick={onClose}>
           X
         </button>
-        <h2>Edit Fruit</h2>
-        <div>
-          <label>Name:</label>
-          <input type="text" value={name} onChange={handleNameChange} />
+        <h2>Editar Fruta</h2>
+        <div className="form-group">
+          <label htmlFor="name-input">Nome fruta:</label>
+          <input
+            id="name-input"
+            placeholder="Nome Fruta"
+            type="text"
+            value={name}
+            onChange={handleNameChange}
+          />
         </div>
-        <div>
-          <label>Price per kilo:</label>
-          <input type="number" value={price} onChange={handlePriceChange} />
+        <div className="form-group">
+          <label htmlFor="price-input">Preço do kilo:</label>
+          <input
+            id="price-input"
+            type="number"
+            value={price}
+            onChange={handlePriceChange}
+          />
         </div>
-        <div>
-          <label>Quantity:</label>
-          <input type="number" value={quantity} onChange={handleQuantityChange} />
+        <div className="form-group">
+          <label htmlFor="quantity-input">Quantidade em estoque:</label>
+          <input
+            id="quantity-input"
+            type="number"
+            value={quantity}
+            onChange={handleQuantityChange}
+          />
         </div>
         <button onClick={handleUpdateFruit}>Update Fruit</button>
       </div>
