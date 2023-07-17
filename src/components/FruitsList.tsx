@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import EditWindow from './EditWindow';
+import EditDeleteWindow from './EditDeleteWindow';
 import SearchBar from './SearchBar';
-import DeleteWindow from './DeleteWindow';
-import CreateWindow from './CreateWindow';
-import ConfirmFruit from './ConfirmFruit';
 import "./styles/FruitsList.css"
 
 interface Fruit {
@@ -19,44 +16,18 @@ interface FruitsListProps {
 
 const FruitsList: React.FC<FruitsListProps> = ({ fruits, setFruits }) => {
   const [fruitsList, setFruitsList] = useState<Fruit[]>(fruits);
-  const [editFruitIndex, setEditFruitIndex] = useState<number | null>(null);
-  const [showDeleteWindow, setShowDeleteWindow] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [deleteFruitIndex, setDeleteFruitIndex] = useState<number | null>(null);
+  const [showEditDeleteWindow, setShowEditDeleteWindow] = useState(false);
+  const [selectedFruitIndex, setSelectedFruitIndex] = useState<number | null>(null);
 
   useEffect(() => {
     setFruitsList(fruits);
   }, [fruits]);
-  
-  const handleDelete = (index: number) => {
-    setDeleteFruitIndex(index);
-    setShowDeleteWindow(true);
-  };
-
-  const handleConfirmDelete = () => {
-    if (deleteFruitIndex !== null) {
-      const updatedFruits = fruitsList.filter((_, i) => i !== deleteFruitIndex);
-      setFruitsList(updatedFruits);
-      setFruits(updatedFruits);
-    }
-    setShowDeleteWindow(false);
-    setDeleteFruitIndex(null);
-  };  
-
-  const handleCancelDelete = () => {
-    setShowDeleteWindow(false);
-    setDeleteFruitIndex(null);
-  };
-  
-
-  const handleEdit = (index: number) => {
-    setEditFruitIndex(index);
-  };
 
   const handleUpdateFruit = (updatedFruit: Fruit) => {
-    if (editFruitIndex !== null) {
+    if (selectedFruitIndex !== null) {
       const updatedFruits = fruitsList.map((fruit, index) => {
-        if (index === editFruitIndex) {
+        if (index === selectedFruitIndex) {
           return updatedFruit;
         }
         return fruit;
@@ -64,15 +35,33 @@ const FruitsList: React.FC<FruitsListProps> = ({ fruits, setFruits }) => {
       setFruitsList(updatedFruits);
       setFruits(updatedFruits);
     }
-    setEditFruitIndex(null);
   };
 
-  const handleCloseEditWindow = () => {
-    setEditFruitIndex(null);
+  const handleDelete = () => {
+    if (selectedFruitIndex !== null) {
+      const updatedFruits = fruitsList.filter((_, index) => index !== selectedFruitIndex);
+      setFruitsList(updatedFruits);
+      setFruits(updatedFruits);
+    }
   };
 
   const handleSearch = (value: string) => {
     setSearchTerm(value);
+  };
+
+  const handleClose = () => {
+    setSelectedFruitIndex(null);
+    setShowEditDeleteWindow(false);
+  };
+
+  const handleActionsClick = (index: number) => {
+    setSelectedFruitIndex(index);
+    setShowEditDeleteWindow(true);
+  };
+
+  const handleCancelEditDelete = () => {
+    setSelectedFruitIndex(null);
+    setShowEditDeleteWindow(false);
   };
 
   const filteredFruits = fruitsList.filter((fruit) =>
@@ -83,26 +72,28 @@ const FruitsList: React.FC<FruitsListProps> = ({ fruits, setFruits }) => {
     <div className="fruits-list">
       <SearchBar value={searchTerm} onChange={handleSearch} />
       <ul>
-        {filteredFruits.map((fruit, index) => (
-          <li key={index}>
-            <strong>Name:</strong> {fruit.name}, <strong>Price:</strong> {fruit.price} per kilo,{' '}
-            <strong>Quantity:</strong> {fruit.quantity}
-            <button onClick={() => handleEdit(index)}>Edit</button>
-            <button onClick={() => handleDelete(index)}>Delete</button>
-          </li>
-        ))}
+        {filteredFruits.map((fruit, index) => {
+          const formattedPrice = fruit.price.toFixed(2); 
+          return (
+            <li key={index}>
+              <h2>{fruit.name}</h2>
+              <div className='p'>
+                <p className='price'>R$ {formattedPrice}</p>
+                <p>{fruit.quantity} em estoque</p>
+              </div>
+              <div>
+                <button onClick={() => handleActionsClick(index)}><span className='gear-icon'>&#9881;</span></button>
+              </div>
+            </li>
+          );
+        })}
       </ul>
-      {editFruitIndex !== null && (
-        <EditWindow
-          fruit={fruitsList[editFruitIndex]}
+      {showEditDeleteWindow && selectedFruitIndex !== null && (
+        <EditDeleteWindow
+          fruit={fruitsList[selectedFruitIndex]}
           onUpdateFruit={handleUpdateFruit}
-          onClose={handleCloseEditWindow}
-        />
-      )}
-      {showDeleteWindow && (
-        <DeleteWindow
-          onDelete={handleConfirmDelete}
-          onCancel={handleCancelDelete}
+          onDelete={handleDelete}
+          onClose={handleClose}
         />
       )}
     </div>

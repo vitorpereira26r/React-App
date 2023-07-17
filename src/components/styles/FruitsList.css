@@ -3,31 +3,39 @@
 }
 
 .fruits-list h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 23px;
+  margin-bottom: 5px;
+}
+
+.fruits-list p {
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .fruits-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   list-style: none;
   padding: 0;
 }
 
 .fruits-list li {
+  flex: 0 0 500px;
   margin-bottom: 10px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   border: 1px solid #ccc;
+  justify-content: space-between;
   border-radius: 4px;
+  align-items: flex-start;
   padding: 10px;
-}
-
-.fruits-list li strong {
-  margin-right: 10px;
-  width: 80px;
+  position: relative;
 }
 
 .fruits-list li button {
-  margin-left: auto;
+  margin-top: 0;
   padding: 5px 10px;
   background-color: #ff0000;
   color: white;
@@ -35,10 +43,23 @@
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 10px;
 }
 
+.fruits-list li p {
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.fruits-list .price{
+  color: rgb(21, 154, 89);
+  font-weight: bold;
+} 
+
 .fruits-list li button:hover {
-  background-color: #45a049;
+  background-color: #d23636;
 }
 
 .fruits-list input {
@@ -58,7 +79,10 @@
 
 .fruits-list input:focus {
   outline: none;
-  border-color: #4caf50;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
+  border-color: #000000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 }
 
+.gear-icon{
+  color: #ff0000;
+}

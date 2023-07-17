@@ -1,11 +1,9 @@
-/* Estilos para o componente HomePage */
 .home-page {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  /* Estilos para o botão de adicionar fruta */
   .add-button {
     position: fixed;
     bottom: 20px;
@@ -27,8 +25,7 @@
   .add-button:focus {
     outline: none;
   }
-  
-  /* Estilos para o botão "Add Fruit" */
+
   .add-fruit-button {
     margin-top: 20px;
     width: 210px;

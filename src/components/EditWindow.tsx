@@ -38,14 +38,15 @@ const EditWindow: React.FC<EditWindowProps> = ({ fruit, onUpdateFruit, onClose }
     };
 
     onUpdateFruit(updatedFruit);
+    onClose(); // Fechar a janela após atualizar a fruta
   };
 
   return (
     <div className="create-window-overlay">
       <div className="create-window">
         <button className="close-button" onClick={onClose}>
-            X
-          </button>
+          X
+        </button>
         <h2>Edit Fruit</h2>
         <div>
           <label>Name:</label>
