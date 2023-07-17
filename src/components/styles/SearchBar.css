@@ -15,9 +15,9 @@
   
   .search-bar button {
     padding: 5px;
-    background-color: #4caf50;
+    background-color: #ffffff;
     color: white;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
@@ -27,7 +27,7 @@
   .search-button {
     padding: 10px 20px;
     background-color: #ffffff;
-    color: #4caf50;
+    color: #ffffff;
     border: none;
     border-radius: 4px;
     font-size: 16px;
@@ -35,6 +35,6 @@
   }
   
   .search-bar button:hover {
-    background-color: #45a049;
+    background-color: #7b8081;
   }
   

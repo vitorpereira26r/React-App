@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { FaPlus } from "react-icons/fa";
 import FruitsList from "./FruitsList";
 import CreateWindow from "./CreateWindow";
 import ConfirmFruit from "./ConfirmFruit";
+import './styles/HomePage.css'
 
 interface Fruit {
   name: string;
@@ -28,17 +30,17 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="home-page">
       {fruits.length === 0 && !isCreateWindowOpen ? (
         <div>
           <h2>Cadastre uma fruta</h2>
-          <button onClick={handleToggleCreateWindow}>Add Fruit</button>
+          <button onClick={handleToggleCreateWindow} className="add-fruit-button"> &#43; Cadastre uma fruta</button>
         </div>
       ) : (
         <>
           <FruitsList fruits={fruits} setFruits={setFruits}/>
           <button onClick={handleToggleCreateWindow} className="add-button">
-            +
+            &#43;
           </button>
         </>
       )}
