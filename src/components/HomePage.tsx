@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaPlus } from "react-icons/fa";
 import FruitsList from "./FruitsList";
 import CreateWindow from "./CreateWindow";
 import ConfirmFruit from "./ConfirmFruit";
@@ -16,9 +15,11 @@ const HomePage: React.FC = () => {
   const [isCreateWindowOpen, setIsCreateWindowOpen] = useState(false);
   const [showConfirmFruit, setShowConfirmFruit] = useState(false);
 
-  const handleAddFruit = (fruit: Fruit) => {
-    setFruits((prevFruits) => [...prevFruits, fruit]);
-    setShowConfirmFruit(true);
+  const handleAddFruit = (fruit: Fruit | null) => {
+    if(fruit !== null){
+      setFruits((prevFruits) => [...prevFruits, fruit]);
+      setShowConfirmFruit(true);
+    }
   };
 
   const handleToggleCreateWindow = () => {

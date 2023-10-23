@@ -3,8 +3,8 @@ import "./styles/CreateEditWindow.css";
 
 interface Fruit {
   name: string;
-  price?: number; // Alterado para ser opcional
-  quantity?: number; // Alterado para ser opcional
+  price: number; // Alterado para ser opcional
+  quantity: number; // Alterado para ser opcional
 }
 
 interface CreateWindowProps {
@@ -14,8 +14,8 @@ interface CreateWindowProps {
 
 const CreateWindow: React.FC<CreateWindowProps> = ({ onAddFruit, onClose }) => {
   const [name, setName] = useState("");
-  const [price, setPrice] = useState<number | undefined>(); // Inicializado como undefined
-  const [quantity, setQuantity] = useState<number | undefined>(); // Inicializado como undefined
+  const [price, setPrice] = useState<number>(0.0); // Inicializado como undefined
+  const [quantity, setQuantity] = useState<number>(0); // Inicializado como undefined
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
